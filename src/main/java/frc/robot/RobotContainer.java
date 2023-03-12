@@ -48,8 +48,7 @@ public class RobotContainer {
 
         // The robot's subsystems
         private final DriveSubsystem robotDrive = new DriveSubsystem();
-        private final PneumaticSubsystem pneumaticSubsystem = new PneumaticSubsystem(
-                        Constants.OIConstants.clawPneumaticPort);
+        private final PneumaticSubsystem pneumaticSubsystem = new PneumaticSubsystem();
 
         /**
          * The container for the robot. Contains subsystems, OI devices, and commands.
