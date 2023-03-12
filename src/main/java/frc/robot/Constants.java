@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -57,6 +58,11 @@ public final class Constants {
     public static final int clawDownButton = 1;
 
     public static final int gyroSensorPort = 0;
+
+    public static final int pneumaticsController = 9;
+    public static final int forwardChannel = 0;
+    public static final int reverseChannel = 8;
+    public static final PneumaticsModuleType pneumaticsModuleType = PneumaticsModuleType.REVPH;
   }
 
   public static final class AutoConstants {
