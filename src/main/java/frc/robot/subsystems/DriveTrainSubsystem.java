@@ -1,5 +1,8 @@
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.MecanumDriveKinematics;
@@ -15,10 +18,10 @@ import frc.robot.Constants;
 
 public class DriveTrainSubsystem extends SubsystemBase {
 
-    private final Spark leftMotor1 = new Spark(Constants.DriveTrain.leftFrontMotor);
+    private final CANSparkMax leftMotor1 = new CANSparkMax(Constants.DriveTrain.leftFrontMotor, MotorType.kBrushed);
     private final VictorSP leftMotor2 = new VictorSP(Constants.DriveTrain.leftRearMotor);
 
-    private final Spark rightMotor1 = new Spark(Constants.DriveTrain.rightFrontMotor);
+    private final CANSparkMax rightMotor1 = new CANSparkMax(Constants.DriveTrain.rightFrontMotor, MotorType.kBrushed);
     private final VictorSP rightMotor2 = new VictorSP(Constants.DriveTrain.rightRearMotor);
 
     private final MotorControllerGroup leftMotors = new MotorControllerGroup(leftMotor1, leftMotor2);

@@ -21,12 +21,12 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 public final class Constants {
 
     public static class DriveTrain {
-        public static final int leftFrontMotor = 0;
-        public static final int leftRearMotor = 1;
+        public static final int leftFrontMotor = 1;
+        public static final int leftRearMotor = 3;
         public static final boolean leftReversed = false;
 
         public static final int rightFrontMotor = 2;
-        public static final int rightRearMotor = 3;
+        public static final int rightRearMotor = 4;
         public static final boolean rightReversed = true;
 
     }
