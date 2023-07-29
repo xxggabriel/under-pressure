@@ -20,7 +20,7 @@ public class RobotContainer {
 
   private final DriveTrainSubsystem robotDrive = new DriveTrainSubsystem();
   private final ClawSubsystem robotClaw = new ClawSubsystem();
-  // private final ArmSubsystem robotArm = new ArmSubsystem();
+  private final ArmSubsystem robotArm = new ArmSubsystem();
   private final PneumaticSubsystem robotPneumatic = new PneumaticSubsystem();
 
   
