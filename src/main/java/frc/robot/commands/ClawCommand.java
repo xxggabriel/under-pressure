@@ -16,7 +16,7 @@ public class ClawCommand extends CommandBase {
   public ClawCommand(ClawSubsystem subsystem, XboxController controller) {
     this.claw = subsystem;
     this.controller = controller;
-    
+
     addRequirements(subsystem);
   }
 
@@ -29,12 +29,7 @@ public class ClawCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
-    // claw.setSpeed(controller.getLeftTriggerAxis());
-    claw.setSpeed(controller.getRawAxis(1));
-    // if(controller.getRawAxis(1) < 0.2) {
-    //     claw.setSpeed(-controller.getRightTriggerAxis());
-    // }
+    claw.setSpeed(controller.getRawAxis(3));
   }
 
   // Called once the command ends or is interrupted.

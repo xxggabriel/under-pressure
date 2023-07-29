@@ -32,11 +32,7 @@ public class ArmCommand extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        armSubsystem.setSpeed(1);
-        // if (controller.getBButtonPressed()) {
-        // } else if(controller.getYButtonPressed()) {
-        //     armSubsystem.setSpeed(-1);
-        // }
+        armSubsystem.setSpeed(controller.getRawAxis(1));
     }
 
     // Called once the command ends or is interrupted.

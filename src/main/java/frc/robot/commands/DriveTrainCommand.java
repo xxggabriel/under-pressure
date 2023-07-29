@@ -32,6 +32,13 @@ public class DriveTrainCommand extends CommandBase {
     public void execute() {
         double speed = this.joystick.getRawAxis(Constants.IO.Joystick.portSpeed);
         double rotation = this.joystick.getRawAxis(Constants.IO.Joystick.portRotation);
+
+        speed = speed * joystick.getRawAxis(3);
+
+        if (speed < .3) {
+            speed = 0.3;
+        }
+
         this.driveTrain.arcadeDrive(-speed, rotation);
     }
 

@@ -32,11 +32,11 @@ public final class Constants {
     }
 
     public static class Craw {
-        public static final int motor = 0;
+        public static final int motor = 1;
     }
 
     public static class Arm {
-        public static final int motor = 1;
+        public static final int motor = 0;
     }
 
     public static class Pneumatic {
