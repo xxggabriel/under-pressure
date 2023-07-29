@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class ArmCommand extends CommandBase {
     private final ArmSubsystem armSubsystem;
-    private final PneumaticSubsystem pneumaticSubsystem;
+    // private final PneumaticSubsystem pneumaticSubsystem;
     private final XboxController controller;
 
     /**
@@ -17,7 +17,7 @@ public class ArmCommand extends CommandBase {
      */
     public ArmCommand(ArmSubsystem armSubsystem, PneumaticSubsystem pneumaticSubsystem ,XboxController controller) {
         this.armSubsystem = armSubsystem;
-        this.pneumaticSubsystem = pneumaticSubsystem;
+        // this.pneumaticSubsystem = pneumaticSubsystem;
         this.controller = controller;
 
         addRequirements(this.armSubsystem);
@@ -32,10 +32,11 @@ public class ArmCommand extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        armSubsystem.setSpeed(controller.getRawAxis(1));
-        if(controller.getRawAxis(1) > .8) {
-            pneumaticSubsystem.open(); 
-        }
+        armSubsystem.setSpeed(1);
+        // if (controller.getBButtonPressed()) {
+        // } else if(controller.getYButtonPressed()) {
+        //     armSubsystem.setSpeed(-1);
+        // }
     }
 
     // Called once the command ends or is interrupted.

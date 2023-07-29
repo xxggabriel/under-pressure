@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.commands.ArmCommand;
 import frc.robot.commands.ClawCommand;
 import frc.robot.commands.DriveTrainCommand;
+import frc.robot.commands.PneumaticCommand;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClawSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
@@ -19,7 +20,7 @@ public class RobotContainer {
 
   private final DriveTrainSubsystem robotDrive = new DriveTrainSubsystem();
   private final ClawSubsystem robotClaw = new ClawSubsystem();
-  private final ArmSubsystem robotArm = new ArmSubsystem();
+  // private final ArmSubsystem robotArm = new ArmSubsystem();
   private final PneumaticSubsystem robotPneumatic = new PneumaticSubsystem();
 
   
@@ -36,10 +37,11 @@ public class RobotContainer {
     ClawCommand clawCommand = new ClawCommand(robotClaw, oi.getOperatorController());
     robotClaw.setDefaultCommand(clawCommand);
 
+    PneumaticCommand pneumaticCommand = new PneumaticCommand(robotPneumatic, oi.getOperatorController());
+    robotPneumatic.setDefaultCommand(pneumaticCommand);
     
     ArmCommand armCommand = new ArmCommand(robotArm, robotPneumatic, oi.getOperatorController());
     robotArm.setDefaultCommand(armCommand);
-
   }
 
   public Command getAutonomousCommand() {

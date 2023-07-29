@@ -32,18 +32,18 @@ public final class Constants {
     }
 
     public static class Craw {
-        public static final int motor = 4;
+        public static final int motor = 0;
     }
 
     public static class Arm {
-        public static final int motor = 5;
+        public static final int motor = 1;
     }
 
     public static class Pneumatic {
         public static final PneumaticsModuleType moduleType = PneumaticsModuleType.REVPH;
         public static final int controller = 9;
-        public static final int forwardChannel = 0;
-        public static final int reverseChannel = 6;
+        public static final int forwardChannel = 8;
+        public static final int reverseChannel = 9;
     }
     
 
@@ -51,12 +51,12 @@ public final class Constants {
 
         public static final int encoderDistancePerPulse = 600;
 
-        public static final int leftEncoderPort1 = 0;
-        public static final int leftEncoderPort2 = 1;
+        public static final int leftEncoderPort1 = 8;
+        public static final int leftEncoderPort2 = 9;
         public static final boolean leftEncoderReversed = false;
 
-        public static final int rightEncoderPort1 = 2;
-        public static final int rightEncoderPort2 = 3;
+        public static final int rightEncoderPort1 = 0;
+        public static final int rightEncoderPort2 = 1;
         public static final boolean rightEncoderReversed = true;
 
         public static final int gyroPort = 0;
@@ -66,8 +66,8 @@ public final class Constants {
         public static class Joystick {
             public static final int port = 0;
 
-            public static final int portSpeed = 1;
-            public static final int portRotation = 0;
+            public static final int portSpeed = 0;
+            public static final int portRotation = 1;
         }
 
         public static class Controller {

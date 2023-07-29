@@ -31,7 +31,7 @@ public class ClawCommand extends CommandBase {
   public void execute() {
     
     // claw.setSpeed(controller.getLeftTriggerAxis());
-    claw.setSpeed(controller.getRawAxis(0));
+    claw.setSpeed(controller.getRawAxis(1));
     // if(controller.getRawAxis(1) < 0.2) {
     //     claw.setSpeed(-controller.getRightTriggerAxis());
     // }

@@ -1,5 +1,15 @@
 {
   "SysId": {
-    "Analysis Type": "General Mechanism"
+    "Analysis Type": "General Mechanism",
+    "Analyzer": {
+      "window": {
+        "visible": false
+      }
+    },
+    "NetworkTables Settings": {
+      "serverTeam": "10.92.61.2"
+    },
+    "mode": "Client (NT3)",
+    "serverTeam": "10.92.61.2"
   }
 }
