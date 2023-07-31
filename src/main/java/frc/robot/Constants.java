@@ -32,18 +32,18 @@ public final class Constants {
     }
 
     public static class Craw {
-        public static final int motor = 1;
+        public static final int motor = 6;
     }
 
     public static class Arm {
-        public static final int motor = 0;
+        public static final int motor = 5;
     }
 
     public static class Pneumatic {
         public static final PneumaticsModuleType moduleType = PneumaticsModuleType.REVPH;
         public static final int controller = 9;
-        public static final int forwardChannel = 8;
-        public static final int reverseChannel = 9;
+        public static final int forwardChannel = 1;
+        public static final int reverseChannel = 7;
     }
     
 
