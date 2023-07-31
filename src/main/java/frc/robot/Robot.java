@@ -7,6 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.ClawSubsystem;
+import frc.robot.subsystems.DriveTrainSubsystem;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
@@ -37,10 +40,39 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    ArmSubsystem armSubsystem = new ArmSubsystem();
+    ClawSubsystem clawSubsystem = new ClawSubsystem();
+    DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
+
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
+    }
+
+    // Obtenha a distância atual percorrida pelos encoders
+    double leftDistance = driveTrainSubsystem.getLeftEncoder().getDistance();
+    double rightDistance = driveTrainSubsystem.getRightEncoder().getDistance();
+
+    // Calcule a distância total percorrida (a média dos dois lados)
+    double averageDistance = (leftDistance + rightDistance) / 2.0;
+
+    // Se a distância total ainda for menor que a distância desejada, continue
+    // andando para frente
+    if (averageDistance < 3) {
+      // Ajuste aqui a velocidade e direção para o movimento do seu robô
+      double speed = 0.5; // Exemplo: velocidade de 50%
+      double rotation = 0.0; // Exemplo: sem rotação
+
+      // Defina os motores de acordo com a velocidade e rotação
+      leftMotor.set(speed + rotation);
+      rightMotor.set(speed - rotation);
+
+      driveTrainSubsystem.arcadeDrive(.6, 0);
+    } else {
+      // Caso contrário, pare o robô
+      leftMotor.set(0.0);
+      rightMotor.set(0.0);
     }
   }
 
