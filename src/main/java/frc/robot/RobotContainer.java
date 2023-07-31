@@ -23,9 +23,6 @@ public class RobotContainer {
   private final ArmSubsystem robotArm = new ArmSubsystem();
   private final PneumaticSubsystem robotPneumatic = new PneumaticSubsystem();
 
-  
-
-
   public RobotContainer() {
     configureBindings();
   }
@@ -39,12 +36,35 @@ public class RobotContainer {
 
     PneumaticCommand pneumaticCommand = new PneumaticCommand(robotPneumatic, oi.getOperatorController());
     robotPneumatic.setDefaultCommand(pneumaticCommand);
-    
+
     ArmCommand armCommand = new ArmCommand(robotArm, robotPneumatic, oi.getOperatorController());
     robotArm.setDefaultCommand(armCommand);
   }
 
-  public Command getAutonomousCommand() {
-    return Commands.print("No autonomous command configured");
+  public void initAutonomous() {
+    robotDrive.resetEncoders();
+  }
+
+  public void autonomousPeriodic() {
+    // Obtenha a distância atual percorrida pelos encoders
+    double leftDistance = robotDrive.getLeftEncoder().getDistance();
+    double rightDistance = robotDrive.getRightEncoder().getDistance();
+
+    // Calcule a distância total percorrida (a média dos dois lados)
+    double averageDistance = (leftDistance + rightDistance) / 2.0;
+
+    // Se a distância total ainda for menor que a distância desejada, continue
+    // andando para frente
+    if (averageDistance < 4) {
+      // Ajuste aqui a velocidade e direção para o movimento do seu robô
+      double speed = 0.5; // Exemplo: velocidade de 50%
+      double rotation = 0.0; // Exemplo: sem rotação
+
+      // Defina os motores de acordo com a velocidade e rotação
+      robotDrive.arcadeDrive(speed, rotation);
+    } else {
+      // Caso contrário, pare o robô
+      robotDrive.arcadeDrive(0, 0);
+    }
   }
 }
