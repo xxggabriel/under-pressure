@@ -7,6 +7,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.MecanumDriveKinematics;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
@@ -27,18 +28,24 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
     private final DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
 
-    // private final Encoder leftEncoder = new Encoder(
-    //         Constants.Sensor.leftEncoderPort1,
-    //         Constants.Sensor.leftEncoderPort2,
-    //         Constants.Sensor.leftEncoderReversed);
+    private final Encoder leftEncoder = new Encoder(
+            Constants.Sensor.leftEncoderPort1,
+            Constants.Sensor.leftEncoderPort2,
+            Constants.Sensor.leftEncoderReversed);
 
-    // private final Encoder rightEncoder = new Encoder(
-    //         Constants.Sensor.rightEncoderPort1,
-    //         Constants.Sensor.rightEncoderPort2,
-    //         Constants.Sensor.rightEncoderReversed);
+    private final Encoder rightEncoder = new Encoder(
+            Constants.Sensor.rightEncoderPort1,
+            Constants.Sensor.rightEncoderPort2,
+            Constants.Sensor.rightEncoderReversed);
 
-    private final AnalogGyro gyro = new AnalogGyro(Constants.Sensor.gyroPort);
-    private DifferentialDriveOdometry odometry = new DifferentialDriveOdometry(gyro.getRotation2d(), 0, 0);
+    // Ajuste essas constantes de acordo com as especificações do seu robô e dos encoders
+    private final double DISTANCE_TO_DRIVE_METERS = 3.0;
+    private final double WHEEL_DIAMETER_METERS = 0.15; // Diâmetro das rodas em metros
+    private final int PULSES_PER_REVOLUTION = Constants.Sensor.encoderDistancePerPulse; // Pulsos por volta do encoder
+    private final double GEAR_RATIO = 1.0; // Relação de transmissão do encoder
+
+    // private final AnalogGyro gyro = new AnalogGyro(Constants.Sensor.gyroPort);
+    // private DifferentialDriveOdometry odometry = new DifferentialDriveOdometry(gyro.getRotation2d(), 0, 0);
 
     /** Creates a new DriveTrain. */
     public DriveTrainSubsystem() {
@@ -77,18 +84,26 @@ public class DriveTrainSubsystem extends SubsystemBase {
         // Shuffleboard.getTab("Chassi").add("Velocidade Direita", rightMotors.get());
     }
 
-    public Pose2d getPose() {
-        return odometry.getPoseMeters();
-    }
+    // public Pose2d getPose() {
+    //     // return odometry.getPoseMeters();
+    // }
 
     public void updateOdometry() {
-        // double left = leftEncoder.getDistance();
-        // double right = rightEncoder.getDistance();
+        double left = leftEncoder.getDistance();
+        double right = rightEncoder.getDistance();
         // odometry.update(gyro.getRotation2d(), left, right);
     }
 
     public void resetEncoders() {
-        // leftEncoder.reset();
-        // rightEncoder.reset();
+        leftEncoder.reset();
+        rightEncoder.reset();
     }
+
+    public Encoder getLeftEncoder() {
+        return leftEncoder;
+    }
+
+    public Encoder getRightEncoder() {
+        return rightEncoder;
+    }   
 }
