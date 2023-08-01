@@ -24,7 +24,7 @@ public class DriveTrainCommand extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        this.driveTrain.arcadeDrive(0, 0);
+        // this.driveTrain.arcadeDrive(0, 0);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -33,19 +33,19 @@ public class DriveTrainCommand extends CommandBase {
         double speed = this.joystick.getRawAxis(Constants.IO.Joystick.portSpeed);
         double rotation = this.joystick.getRawAxis(Constants.IO.Joystick.portRotation);
 
-        speed = speed * joystick.getRawAxis(3);
+        // speed = speed * joystick.getRawAxis(3);
 
-        if (speed < .3) {
-            speed = 0.3;
-        }
+        // if (speed < .3) {
+        //     speed = 0.3;
+        // }
 
-        this.driveTrain.arcadeDrive(-speed, rotation);
+        this.driveTrain.arcadeDrive(speed, -rotation);
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        this.driveTrain.arcadeDrive(0, 0);
+        // this.driveTrain.arcadeDrive(0, 0);
     }
 
     // Returns true when the command should end.

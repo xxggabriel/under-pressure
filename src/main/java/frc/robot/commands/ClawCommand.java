@@ -29,7 +29,7 @@ public class ClawCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    claw.setSpeed(controller.getRawAxis(3));
+    claw.setSpeed(-controller.getRawAxis(3));
   }
 
   // Called once the command ends or is interrupted.

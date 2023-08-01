@@ -1,12 +1,13 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class ClawSubsystem extends SubsystemBase {
 
-    private final Spark claw = new Spark(Constants.Craw.motor);
+    private final CANSparkMax claw = new CANSparkMax(Constants.Craw.motor, MotorType.kBrushless);
 
     /** Creates a new ClawSubsystem. */
     public ClawSubsystem() {

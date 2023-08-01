@@ -66,8 +66,8 @@ public final class Constants {
         public static class Joystick {
             public static final int port = 0;
 
-            public static final int portSpeed = 0;
-            public static final int portRotation = 1;
+            public static final int portSpeed = 1;
+            public static final int portRotation = 0;
         }
 
         public static class Controller {

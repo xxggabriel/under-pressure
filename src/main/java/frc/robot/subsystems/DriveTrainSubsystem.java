@@ -48,15 +48,15 @@ public class DriveTrainSubsystem extends SubsystemBase {
     // private DifferentialDriveOdometry odometry = new DifferentialDriveOdometry(gyro.getRotation2d(), 0, 0);
 
     /** Creates a new DriveTrain. */
-    public DriveTrainSubsystem() {
-        rightMotors.setInverted(Constants.DriveTrain.rightReversed);
-        leftMotors.setInverted(Constants.DriveTrain.leftReversed);
+    public DriveTrainSubsystem() {      
+        rightMotors.setInverted(false);
+        leftMotors.setInverted(true);
 
         // Sets the distance per pulse for the encoders
-        // leftEncoder.setDistancePerPulse(Constants.Sensor.encoderDistancePerPulse);
-        // rightEncoder.setDistancePerPulse(Constants.Sensor.encoderDistancePerPulse);
+        leftEncoder.setDistancePerPulse(Constants.Sensor.encoderDistancePerPulse);
+        rightEncoder.setDistancePerPulse(Constants.Sensor.encoderDistancePerPulse);
 
-        drive.feed();
+        // drive.feed();
 
         resetEncoders();
     }
@@ -64,8 +64,8 @@ public class DriveTrainSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         updateOdometry();
-        // System.out.println("LEFT: "+leftEncoder.get());
-        // System.out.println("RIGHT: "+rightEncoder.get());
+        System.out.println("LEFT: "+leftEncoder.get());
+        System.out.println("RIGHT: "+rightEncoder.get());
     }
 
     @Override
