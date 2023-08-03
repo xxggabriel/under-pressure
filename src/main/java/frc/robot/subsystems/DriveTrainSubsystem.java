@@ -56,16 +56,15 @@ public class DriveTrainSubsystem extends SubsystemBase {
         leftEncoder.setDistancePerPulse(Constants.Sensor.encoderDistancePerPulse);
         rightEncoder.setDistancePerPulse(Constants.Sensor.encoderDistancePerPulse);
 
-        // drive.feed();
-
         resetEncoders();
     }
 
     @Override
     public void periodic() {
+        drive.feed();
         updateOdometry();
-        System.out.println("LEFT: "+leftEncoder.get());
-        System.out.println("RIGHT: "+rightEncoder.get());
+        // System.out.println("LEFT: "+leftEncoder.get());
+        // System.out.println("RIGHT: "+rightEncoder.get());
     }
 
     @Override

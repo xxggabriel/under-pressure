@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.commands.ArmCommand;
+import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.ClawCommand;
 import frc.robot.commands.DriveTrainCommand;
 import frc.robot.commands.PneumaticCommand;
@@ -41,30 +42,11 @@ public class RobotContainer {
     robotArm.setDefaultCommand(armCommand);
   }
 
-  public void initAutonomous() {
-    robotDrive.resetEncoders();
-  }
+  public AutonomousCommand getAutonomousCommand() {
+    AutonomousCommand m_autonomousCommand = new AutonomousCommand(
+      this.robotDrive, this.robotClaw, this.robotArm, this.robotPneumatic
+    );
 
-  public void autonomousPeriodic() {
-    // Obtenha a distância atual percorrida pelos encoders
-    double leftDistance = robotDrive.getLeftEncoder().getDistance();
-    double rightDistance = robotDrive.getRightEncoder().getDistance();
-
-    // Calcule a distância total percorrida (a média dos dois lados)
-    double averageDistance = (leftDistance + rightDistance) / 2.0;
-
-    // Se a distância total ainda for menor que a distância desejada, continue
-    // andando para frente
-    if (averageDistance < 4) {
-      // Ajuste aqui a velocidade e direção para o movimento do seu robô
-      double speed = 0.5; // Exemplo: velocidade de 50%
-      double rotation = 0.0; // Exemplo: sem rotação
-
-      // Defina os motores de acordo com a velocidade e rotação
-      robotDrive.arcadeDrive(speed, rotation);
-    } else {
-      // Caso contrário, pare o robô
-      robotDrive.arcadeDrive(0, 0);
-    }
+    return m_autonomousCommand;
   }
 }
